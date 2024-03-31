@@ -25,7 +25,7 @@ function resolve_dest() {
 }
 
 # link files
-ROOT=$(cd $(dirname ${BASH_SOURCE:-$0}) && pwd)
+ROOT="$(cd $(dirname ${BASH_SOURCE:-$0}) && pwd)/files"
 
 FILES=$(find "$ROOT/" -type f)
 
