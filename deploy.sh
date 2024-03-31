@@ -30,7 +30,7 @@ ROOT="$(cd $(dirname ${BASH_SOURCE:-$0}) && pwd)/files"
 FILES=$(find "$ROOT/" -type f)
 
 echo "Resolving existing files..."
-for file in $FILES; do
+echo $FILES | while read file; do
     [[ ! -n "$file" ]] && continue
     DEST="$HOME/.config/nvim/${file#"$ROOT/"}"
     DEST_D=$(dirname "$DEST")
@@ -40,7 +40,7 @@ done
 echo ""
 
 echo "Creating new links..."
-for file in $FILES; do
+echo $FILES | while read file; do
     [[ ! -n "$file" ]] && continue
     SRC="$file"
     DEST="$HOME/.config/nvim/${file#"$ROOT"}"
