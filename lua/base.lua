@@ -33,6 +33,7 @@ vim.opt.signcolumn = 'yes' --行数表示の横に余白を追加
 vim.opt.hidden = true
 vim.opt.swapfile = false --スワップファイルを生成しない
 vim.opt.wrap = true --端までコードが届いた際に折り返す
+vim.opt.shell = 'zsh'
 
 -- float-transparent
 vim.opt.winblend = 5 --フロートウィンドウなどを若干透明に
@@ -44,16 +45,6 @@ vim.cmd([[
 local keymap = vim.keymap
 -- キーバインド
 -- 画面分割
-keymap.set('n', '<C-s><C-s>', ':split<Return><C-w>w')
-keymap.set('n', '<C-s><C-v>', ':vsplit<Return><C-w>w')
--- アクティブウィンドウの移動
-keymap.set('n', '<C-s><C-h>', '<C-w>h')
-keymap.set('n', '<C-s><C-k>', '<C-w>k')
-keymap.set('n', '<C-s><C-j>', '<C-w>j')
-keymap.set('n', '<C-s><C-l>', '<C-w>l')
-
--- jjでEscする
-keymap.set('i','jj','<Esc>')
--- 設定ファイルを開く
-keymap.set('n','<F1>',':edit $MYVIMRC<CR>')
+keymap.set('n', '<C-s><C-s>', '<cmd>split<cr><C-w>w')
+keymap.set('n', '<C-s><C-v>', '<cmd>vsplit<cr><C-w>w')
 
