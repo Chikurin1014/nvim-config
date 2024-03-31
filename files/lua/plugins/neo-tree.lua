@@ -23,7 +23,7 @@ return {
             })
             local map = vim.api.nvim_set_keymap
             local opts = { noremap = true, silent = true }
-            map('n', '<space>', '<cmd>Neotree toggle<cr>', opts)
+            map('n', '<C-b>', '<cmd>Neotree toggle<cr>', opts)
         end
     }
 }
