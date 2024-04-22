@@ -15,7 +15,7 @@ return {
                 on_attach = on_attach,
                 lsp_flags = lsp_flags,
                 background_colour = '#000000',
-                render = 'default',
+                render = 'compact',
                 stages = 'fade_in_slide_out',
                 timeout = '5000',
                 top_down = false
