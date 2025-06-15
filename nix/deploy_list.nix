@@ -1,13 +1,13 @@
 { src }:
 
 {
-    ".config/nvim/init.lua".source               = src + "/files/init.lua";
-    ".config/nvim/lua/base.lua".source           = src + "/files/lua/base.lua";
-    ".config/nvim/lua/lazy_nvim.lua".source      = src + "/files/lua/lazy_nvim.lua";
+    ".config/nvim/init.lua".source                        = src + "/files/init.lua";
+    ".config/nvim/lua/base.lua".source                    = src + "/files/lua/base.lua";
+    ".config/nvim/lua/lazy_nvim.lua".source               = src + "/files/lua/lazy_nvim.lua";
     ".config/nvim/lua/plugins/alpha.lua".source           = src + "/files/lua/plugins/alpha.lua";
     ".config/nvim/lua/plugins/autopairs.lua".source       = src + "/files/lua/plugins/autopairs.lua";
     ".config/nvim/lua/plugins/bufferline.lua".source      = src + "/files/lua/plugins/bufferline.lua";
-    ".config/nvim/lua/plugins/bufresize.lua".source      = src + "/files/lua/plugins/bufresize.lua";
+    ".config/nvim/lua/plugins/bufresize.lua".source       = src + "/files/lua/plugins/bufresize.lua";
     ".config/nvim/lua/plugins/comment.lua".source         = src + "/files/lua/plugins/comment.lua";
     ".config/nvim/lua/plugins/fm.lua".source              = src + "/files/lua/plugins/fm.lua";
     ".config/nvim/lua/plugins/kanagawa.lua".source        = src + "/files/lua/plugins/kanagawa.lua";
