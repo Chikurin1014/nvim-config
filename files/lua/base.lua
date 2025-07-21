@@ -16,7 +16,6 @@ vim.opt.cmdheight = 2
 vim.opt.laststatus = 2
 vim.opt.expandtab = true
 vim.opt.scrolloff = 10
-vim.opt.shell = 'fish'
 vim.opt.inccommand = 'split'
 vim.opt.ignorecase = true 
 vim.opt.smarttab = true
@@ -41,10 +40,4 @@ vim.opt.winblend = 5 --フロートウィンドウなどを若干透明に
 vim.cmd([[
     let g:python3_host_prog = '/usr/bin/python3'
 ]])
-
-local keymap = vim.keymap
--- キーバインド
--- 画面分割
-keymap.set('n', '<C-s><C-s>', '<cmd>split<cr><C-w>w')
-keymap.set('n', '<C-s><C-v>', '<cmd>vsplit<cr><C-w>w')
 

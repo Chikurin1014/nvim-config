@@ -4,7 +4,7 @@ return {
         version = "*",
         opts = {},
         config = function()
-            local shell = 'zsh -l'
+            local shell = 'zsh'
             local map = vim.api.nvim_set_keymap
             local opts = {}
             local Terminal = require('toggleterm.terminal').Terminal

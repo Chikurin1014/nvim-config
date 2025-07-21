@@ -9,6 +9,7 @@
     ".config/nvim/lua/plugins/bufferline.lua".source      = src + "/files/lua/plugins/bufferline.lua";
     ".config/nvim/lua/plugins/bufresize.lua".source       = src + "/files/lua/plugins/bufresize.lua";
     ".config/nvim/lua/plugins/comment.lua".source         = src + "/files/lua/plugins/comment.lua";
+    ".config/nvim/lua/plugins/copilot.lua".source         = src + "/files/lua/plugins/copilot.lua";
     ".config/nvim/lua/plugins/fm.lua".source              = src + "/files/lua/plugins/fm.lua";
     ".config/nvim/lua/plugins/kanagawa.lua".source        = src + "/files/lua/plugins/kanagawa.lua";
     ".config/nvim/lua/plugins/lsp-colors.lua".source      = src + "/files/lua/plugins/lsp-colors.lua";

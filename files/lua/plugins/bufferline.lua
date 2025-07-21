@@ -17,11 +17,13 @@ return {
             }
             local map = vim.api.nvim_set_keymap
             local opts = { noremap = true, silent = true }
-            map('n', '<leader>k', '<cmd>BufferLineCycleNext<cr>', opts)
-            map('n', '<leader>j', '<cmd>BufferLineCyclePrev<cr>', opts)
-            map('n', '<leader>,', '<cmd>BufferLinePick<cr>', opts)
-            map('n', '<leader>ek', '<cmd>BufferLineCloseRight<cr>', opts)
-            map('n', '<leader>ej', '<cmd>BufferLineCloseLeft<cr>', opts)
+            map('n', '<leader>bn', '<cmd>BufferLineCycleNext<cr>', opts)
+            map('n', '<leader>bp', '<cmd>BufferLineCyclePrev<cr>', opts)
+            map('n', '<leader>bs', '<cmd>BufferLinePick<cr>', opts)
+            map('n', '<leader>wa', '<cmd>BufferLineCloseOthers<cr>', opts)
+            map('n', '<leader>ws', '<cmd>BufferLinePickClose<cr>', opts)
+            map('n', '<leader>wn', '<cmd>BufferLineCloseRight<cr>', opts)
+            map('n', '<leader>wp', '<cmd>BufferLineCloseLeft<cr>', opts)
         end
     }
 }
