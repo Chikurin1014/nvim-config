@@ -4,7 +4,7 @@ return {
         version = "*",
         opts = {},
         config = function()
-            local shell = os.getenv('TMUX_SHELL')
+            local shell = 'zsh -l'
             local map = vim.api.nvim_set_keymap
             local opts = {}
             local Terminal = require('toggleterm.terminal').Terminal
