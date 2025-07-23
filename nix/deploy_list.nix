@@ -19,6 +19,7 @@
     ".config/nvim/lua/plugins/neo-tree.lua".source        = src + "/files/lua/plugins/neo-tree.lua";
     ".config/nvim/lua/plugins/noice.lua".source           = src + "/files/lua/plugins/noice.lua";
     ".config/nvim/lua/plugins/notify.lua".source          = src + "/files/lua/plugins/notify.lua";
+    ".config/nvim/lua/plugins/remote-nvim.lua".source     = src + "/files/lua/plugins/remote-nvim.lua";
     ".config/nvim/lua/plugins/scrollbar.lua".source       = src + "/files/lua/plugins/scrollbar.lua";
     ".config/nvim/lua/plugins/sidebar.lua".source         = src + "/files/lua/plugins/sidebar.lua";
     ".config/nvim/lua/plugins/telescope.lua".source       = src + "/files/lua/plugins/telescope.lua";
