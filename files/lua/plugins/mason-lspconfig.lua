@@ -11,7 +11,6 @@ return {
                 ensure_installed = {
                     'bashls',
                     'clangd',
-                    'cmake',
                     'dockerls',
                     'jsonls',
                     'remark_ls',
@@ -26,9 +25,9 @@ return {
                     function(server_name)
                         require('lspconfig')[server_name].setup({})
                     end,
-                    -- ['rust_analyzer'] = function()
-                    --     require('rust-tools').setup()
-                    -- end,
+                    ['rust_analyzer'] = function()
+                        require('rust-tools').setup()
+                    end,
                 }
             })
         end
