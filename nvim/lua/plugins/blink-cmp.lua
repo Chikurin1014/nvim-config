@@ -47,7 +47,7 @@ return {
             snippets = { preset = 'luasnip' },
             completion = {
                 ghost_text = {
-                    enabled = true,
+                    enabled = false,
                     show_with_menu = true,
                 },
                 list = { selection = { auto_insert = false } },
