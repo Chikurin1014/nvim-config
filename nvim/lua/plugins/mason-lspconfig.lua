@@ -24,6 +24,6 @@ return {
         },
         lazy = true,
         event = 'FileType',
-        opts = {        },
+        opts = {},
     },
 }
