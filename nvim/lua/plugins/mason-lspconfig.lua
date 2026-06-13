@@ -24,22 +24,6 @@ return {
         },
         lazy = true,
         event = 'FileType',
-        opts = {
-            -- Some LSP is not supported with the latest API
-            -- See: https://github.com/neovim/nvim-lspconfig/issues/3705
-            ensure_installed = {
-                'bashls',
-                'clangd',
-                'copilot',
-                'jsonls',
-                'lua_ls',
-                'remark_ls',
-                'pyright',
-                'rust_analyzer',
-                'taplo',
-                'yamlls',
-                'zls',
-            },
-        },
+        opts = {        },
     },
 }
