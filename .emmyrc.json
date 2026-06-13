@@ -1,0 +1,12 @@
+{
+  "runtime": {
+    "version": "LuaJIT"
+  },
+  "workspace": {
+    "checkThirdParty": false,
+    "library": [
+      "$HOME/.nix-profile/share/nvim/runtime",
+      "$HOME/.local/share/nvim/lazy",
+    ]
+  }
+}
