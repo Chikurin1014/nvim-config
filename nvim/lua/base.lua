@@ -7,6 +7,7 @@ vim.g.shell = vim.g.is_unix and 'fish' or 'nu'
 vim.g.default_colorscheme = 'kanagawa'
 
 vim.opt.backup = false
+vim.opt.exrc = true
 vim.opt.number = true
 vim.opt.showcmd = true
 vim.opt.shiftwidth = 4
