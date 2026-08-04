@@ -8,12 +8,13 @@ return {
             local treesitter = require 'nvim-treesitter'
 
             treesitter.setup { install_dir = vim.fs.joinpath(vim.fn.stdpath('data'), 'treesitter') }
+            treesitter.install { "gitcommit" }
 
             vim.api.nvim_create_autocmd('FileType', {
                 group = vim.api.nvim_create_augroup('TreesitterSetup', { clear = false }),
                 pattern = '*',
-                callback = function (opts)
-                    local ft = vim.bo[opts.buf].filetype
+                callback = function ()
+                    local ft = vim.filetype.match { buf = 0 }
                     treesitter.install(ft)
                     vim.treesitter.start()
 
