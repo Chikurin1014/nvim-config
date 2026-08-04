@@ -14,6 +14,9 @@ return {
                 group = vim.api.nvim_create_augroup('TreesitterSetup', { clear = false }),
                 pattern = '*',
                 callback = function ()
+                    -- Do not start treesitter if the buffer is not a file
+                    if vim.bo.buftype ~= '' then return end
+
                     local ft = vim.filetype.match { buf = 0 }
                     treesitter.install(ft)
                     vim.treesitter.start()
