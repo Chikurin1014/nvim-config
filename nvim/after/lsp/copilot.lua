@@ -1,5 +1,5 @@
 return {
-    on_init = function ()
+    on_init = function()
         -- Suggest highlight
         local hlc = vim.api.nvim_get_hl(0, { name = 'Comment' })
         local hlm = vim.api.nvim_get_hl(0, { name = 'MoreMsg' })
@@ -7,33 +7,33 @@ return {
         vim.api.nvim_set_hl(0, 'ComplHintMore', vim.tbl_extend('force', hlm, { underline = true }))
 
         vim.api.nvim_create_autocmd('LspAttach', {
-            callback = function (args)
+            callback = function(args)
                 local _ = args
                 if vim.lsp.inline_completion then
                     -- Enable inline completion
                     vim.lsp.inline_completion.enable(true)
                     -- Toggle inline completion
-                    vim.keymap.set('n', '<leader>tc', function ()
+                    vim.keymap.set('n', '<leader>tc', function()
                         local enable = not vim.lsp.inline_completion.is_enabled()
                         vim.lsp.inline_completion.enable(enable)
                     end, { expr = true, desc = 'Toggle copilot' }
                     )
                 end
 
-                -- Confirm with <tab>
-                vim.keymap.set('i', '<tab>', function ()
+                -- Confirm with <C-y>
+                vim.keymap.set('i', '<C-y>', function()
                     if not vim.lsp.inline_completion.get() then
-                        return '<tab>'
+                        return '<C-y>'
                     end
                 end, { expr = true, desc = 'Confirm copilot suggestion' }
                 )
 
-                -- <C-n>/<C-p>で補完候補を選択
-                vim.keymap.set('i', '<C-n>', function ()
+                -- <C-f>/<C-b>で補完候補を選択
+                vim.keymap.set('i', '<C-f>', function()
                     vim.lsp.inline_completion.select()
                 end, { desc = 'Next copilot suggestion' }
                 )
-                vim.keymap.set('i', '<C-p>', function ()
+                vim.keymap.set('i', '<C-b>', function()
                     vim.lsp.inline_completion.select({ count = -1 * vim.v.count1 })
                 end, { desc = 'Previous copilot suggestion' }
                 )
