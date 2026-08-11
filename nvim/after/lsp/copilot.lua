@@ -20,20 +20,20 @@ return {
                     )
                 end
 
-                -- Confirm with <C-y>
-                vim.keymap.set('i', '<C-y>', function ()
+                -- Confirm with <tab>
+                vim.keymap.set('i', '<tab>', function ()
                     if not vim.lsp.inline_completion.get() then
-                        return '<C-y>'
+                        return '<tab>'
                     end
                 end, { expr = true, desc = 'Confirm copilot suggestion' }
                 )
 
-                -- <C-f>/<C-b>で補完候補を選択
-                vim.keymap.set('i', '<C-f>', function ()
+                -- <C-n>/<C-p>で補完候補を選択
+                vim.keymap.set('i', '<C-n>', function ()
                     vim.lsp.inline_completion.select()
                 end, { desc = 'Next copilot suggestion' }
                 )
-                vim.keymap.set('i', '<C-b>', function ()
+                vim.keymap.set('i', '<C-p>', function ()
                     vim.lsp.inline_completion.select({ count = -1 * vim.v.count1 })
                 end, { desc = 'Previous copilot suggestion' }
                 )
