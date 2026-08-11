@@ -16,9 +16,7 @@ return {
                 callback = function ()
                     -- Do not start treesitter if the buffer is not a file
                     if vim.bo.buftype ~= '' then return end
-                    if vim.tbl_contains({
-                        'oil',
-                    }, vim.bo.filetype) then return end
+                    if vim.tbl_contains({ 'oil' }, vim.bo.filetype) then return end
 
                     local ft = vim.filetype.match { buf = 0 }
                     treesitter.install(ft)
