@@ -1,3 +1,5 @@
+chdir = '~'
+
 [font]
 normal = ['Moralerspace Neon HW']
 size = 11.0
