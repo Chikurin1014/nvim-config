@@ -11,9 +11,21 @@ return {
                 preset = {
                     keys = {
                         { icon = ' ', key = 'f', desc = 'Find File', action = function() Snacks.picker.files() end },
+                        {
+                            icon = '󰙅 ',
+                            key = 'e',
+                            desc = 'Explorer',
+                            action = function()
+                                local oil = require 'oil'
+                                oil.open(nil, { preview = { vertical = true, split = 'belowright' } }, function()
+                                    -- open & resize preview automatically
+                                    oil.open_preview({}, function() vim.cmd('vertical resize 30') end)
+                                end)
+                            end,
+                        },
                         { icon = ' ', key = 'n', desc = 'New File', action = '<cmd>ene | startinsert<cr>' },
                         { icon = '󰒲 ', key = 'l', desc = 'Lazy', action = '<cmd>Lazy<cr>' },
-                        { icon = ' ', key = 'q', desc = 'Quit', action = '<cmd>qa<cr>' },
+                        { icon = '󱁤 ', key = 'm', desc = 'Mason', action = '<cmd>Mason<cr>' },
                     },
                     header = [[
 
