@@ -21,20 +21,20 @@ return {
                     opts.buffer = bufnr
                     vim.keymap.set(mode, l, r, opts)
                 end
-                map({ 'n', 'v' }, 'g', '', { desc = 'Git' })
-
                 map('n', ']g', function ()
                     if vim.wo.diff then
-                        vim.cmd.normal({ ']g', bang = true })
+                        vim.cmd.normal({ ']c', bang = true })
+                    else
+                        gitsigns.nav_hunk('next')
                     end
-                    gitsigns.nav_hunk('next')
                 end, { desc = 'Next git hunk' }
                 )
                 map('n', '[g', function ()
                     if vim.wo.diff then
-                        vim.cmd.normal({ '[g', bang = true })
+                        vim.cmd.normal({ '[c', bang = true })
+                    else
+                        gitsigns.nav_hunk('prev')
                     end
-                    gitsigns.nav_hunk('prev')
                 end, { desc = 'Previous git hunk' }
                 )
 
@@ -46,7 +46,7 @@ return {
                 )
                 map('v', '<leader>gr', function ()
                     gitsigns.reset_hunk({ vim.fn.line('.'), vim.fn.line('v') })
-                end, { desc = 'Reset/Unstage hunk' }
+                end, { desc = 'Reset hunk' }
                 )
                 map('n', '<leader>gi', gitsigns.preview_hunk_inline, { desc = 'Preview hunk inline' })
 
