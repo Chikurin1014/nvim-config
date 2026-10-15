@@ -1,9 +1,10 @@
 return {
     {
-        'williamboman/mason-lspconfig.nvim',
-        specs = {
+        'mason-org/mason-lspconfig.nvim',
+        dependencies = {
+            -- mason.nvim must be set up before mason-lspconfig.nvim
             {
-                'williamboman/mason.nvim',
+                'mason-org/mason.nvim',
                 lazy = true,
                 cmd = {
                     "Mason",
@@ -18,8 +19,6 @@ return {
                 },
                 config = true,
             },
-        },
-        dependencies = {
             'neovim/nvim-lspconfig',
         },
         lazy = true,

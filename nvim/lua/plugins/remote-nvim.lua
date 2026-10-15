@@ -15,7 +15,6 @@ return {
             'RemoteCleanup',
             'RemoteConfigDel',
             'RemoteLog',
-            'UpdateRemotePlugins',
         },
         config = true
     }
