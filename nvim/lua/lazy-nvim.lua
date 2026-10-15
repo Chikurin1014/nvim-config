@@ -1,8 +1,8 @@
 return {
-    setup = function(opts)
+    setup = function()
         local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
-        if not vim.loop.fs_stat(lazypath) then
-            vim.fn.system {
+        if not vim.uv.fs_stat(lazypath) then
+            local out = vim.fn.system {
                 'git',
                 'clone',
                 '--filter=blob:none',
@@ -10,12 +10,15 @@ return {
                 '--branch=stable', -- latest stable release
                 lazypath,
             }
+            if vim.v.shell_error ~= 0 then
+                vim.api.nvim_echo({
+                    { 'Failed to clone lazy.nvim:\n', 'ErrorMsg' },
+                    { out,                            'WarningMsg' },
+                }, true, {})
+                return
+            end
         end
         vim.opt.rtp:prepend(lazypath)
-
-        if opts and opts.pre_load_hook and type(opts.pre_load_hook) == 'function' then
-            opts.pre_load_hook()
-        end
 
         require('lazy').setup {
             spec = {
