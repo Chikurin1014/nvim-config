@@ -1,3 +1,14 @@
+local mode_icons = {
+    ['NORMAL'] = '',
+    ['VISUAL'] = '',
+    ['INSERT'] = '󰊄',
+    ['REPLACE'] = '',
+    ['SELECT'] = '󰒉',
+    ['O-PENDING'] = '',
+    ['COMMAND'] = '',
+    ['TERMINAL'] = '',
+}
+
 return {
     {
         'nvim-lualine/lualine.nvim',
@@ -11,7 +22,7 @@ return {
                 component_separators = '',
                 section_separators = { left = '', right = '' },
                 disabled_filetypes = {
-                    statusline = { 'alpha', 'dashboard', 'snacks_dashboard' },
+                    statusline = { 'snacks_dashboard' },
                 },
                 always_show_tabline = false,
                 globalstatus = true,
@@ -21,19 +32,7 @@ return {
                     {
                         'mode',
                         fmt = function(text)
-                            local icons = {
-                                ['NORMAL'] = '',
-                                ['VISUAL'] = '',
-                                ['INSERT'] = '󰊄',
-                                ['REPLACE'] = '',
-                                ['SELECT'] = '󰒉',
-                                ['O-PENDING'] = '',
-                                ['COMMAND'] = '',
-                                ['TERMINAL'] = '',
-                            }
-                            return icons[text]
-                                and icons[text]
-                                or text:sub(1, 1)
+                            return mode_icons[text] or text:sub(1, 1)
                         end,
                     },
                 },
@@ -91,11 +90,10 @@ return {
                             if not text then return nil end
                             if text:match '.+://' then return text end
 
-                            local root = vim.lsp.buf.list_workspace_folders()
-                            root = root and root[1] or root -- if `root` is table, get the first element
+                            local root = vim.lsp.buf.list_workspace_folders()[1]
                             -- fallback to default
                             local fname = vim.fn.fnamemodify(text, ':h:gs?\\?/?')
-                            if root and #root > 0 then
+                            if root then
                                 local relpath = vim.fs.relpath(root, vim.api.nvim_buf_get_name(0))
                                 if relpath then
                                     fname = vim.fn.fnamemodify(
