@@ -2,7 +2,8 @@ return {
     {
         'stevearc/conform.nvim',
         lazy = true,
-        event = 'BufReadPost',
+        event = 'BufWritePre',
+        cmd = 'ConformInfo',
         opts = {
             formatters_by_ft = {
                 c = { 'clang-format' },
@@ -21,9 +22,10 @@ return {
                 toml = { 'tombi' },
                 yaml = { 'yamlfmt' },
                 zig = { 'zigfmt' },
-                ['*'] = { 'typos' }
+                -- filetypes without formatters: format with LSP, then fix typos
+                ['_'] = { 'typos', lsp_format = 'first' },
             },
-            default_format_ots = {
+            default_format_opts = {
                 lsp_format = 'fallback',
             },
             format_on_save = {
