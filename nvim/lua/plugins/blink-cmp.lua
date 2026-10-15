@@ -5,18 +5,12 @@ return {
         specs = {
             { 'nvim-mini/mini.icons',      lazy = true },
             { 'xzbdmw/colorful-menu.nvim', lazy = true },
-            -- wrapper of sources for nvim-cmp
-            {
-                'saghen/blink.compat', -- use v2.* for blink.cmp v1.*
-                version = '2.*',
-                lazy = true
-            },
             -- sources
             { 'L3MON4D3/LuaSnip',          version = 'v2.*', lazy = true }, -- snippets
             { 'Kaiser-Yang/blink-cmp-git', lazy = true },                   -- git
         },
         lazy = true,
-        event = { 'InsertEnter', 'CmdLineEnter' },
+        event = { 'InsertEnter', 'CmdlineEnter' },
 
         ---@module 'blink.cmp'
         ---@type blink.cmp.Config
@@ -28,16 +22,14 @@ return {
                 ['<C-d>'] = { 'scroll_documentation_down', 'scroll_signature_down', 'fallback' },
             },
             sources = {
-                default = { 'lsp', 'path', 'snippets', 'buffer', 'lazydev' },
+                default = { 'lsp', 'path', 'snippets', 'buffer' },
                 per_filetype = {
                     gitcommit = { 'snippets', 'git', 'path' },
+                    -- load lazydev only for lua files
+                    lua = { inherit_defaults = true, 'lazydev' },
                 },
                 providers = {
                     lsp = { async = true },
-                    luasnip_choice = {
-                        name = 'luasnip_choice',
-                        module = 'blink.compat.source',
-                    },
                     git = {
                         name = 'git',
                         module = 'blink-cmp-git',
