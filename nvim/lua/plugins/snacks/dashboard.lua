@@ -1,8 +1,6 @@
 return {
     {
         'folke/snacks.nvim',
-        priority = 1000,
-        lazy = false,
         keys = {
             { '<leader>od', function() Snacks.dashboard.open({ win = 0 }) end, mode = 'n', desc = 'Open Dashboard' },
         },
@@ -15,13 +13,7 @@ return {
                             icon = '󰙅 ',
                             key = 'e',
                             desc = 'Explorer',
-                            action = function()
-                                local oil = require 'oil'
-                                oil.open(nil, { preview = { vertical = true, split = 'belowright' } }, function()
-                                    -- open & resize preview automatically
-                                    oil.open_preview({}, function() vim.cmd('vertical resize 30') end)
-                                end)
-                            end,
+                            action = function() require('utils.oil').open_with_preview() end,
                         },
                         { icon = ' ', key = 'n', desc = 'New File', action = '<cmd>ene | startinsert<cr>' },
                         { icon = '󰒲 ', key = 'l', desc = 'Lazy', action = '<cmd>Lazy<cr>' },

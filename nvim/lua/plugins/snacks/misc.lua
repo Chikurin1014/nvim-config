@@ -1,6 +1,7 @@
 return {
     {
         'folke/snacks.nvim',
+        -- `priority` and `lazy` apply to all snacks.nvim specs in this directory
         priority = 1000,
         lazy = false,
         keys = {

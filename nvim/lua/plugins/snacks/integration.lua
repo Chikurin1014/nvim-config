@@ -1,8 +1,6 @@
 return {
     {
         'folke/snacks.nvim',
-        priority = 1000,
-        lazy = false,
         specs = {
             { 'nvim-mini/mini.icons', lazy = true },
         },
@@ -27,11 +25,5 @@ return {
                 })
             end
         end,
-    },
-    {
-        'smjonas/inc-rename.nvim',
-        optional = true,
-        lazy = true,
-        opts = { input_buffer_type = 'snacks' },
     },
 }

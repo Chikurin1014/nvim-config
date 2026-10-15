@@ -1,8 +1,6 @@
 return {
     {
         'folke/snacks.nvim',
-        priority = 1000,
-        lazy = false,
         opts = {
             statuscolumn = {
                 left = { 'mark', 'sign' }, -- priority of signs on the left (high to low)
