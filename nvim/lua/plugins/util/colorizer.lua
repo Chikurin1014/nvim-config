@@ -1,8 +1,10 @@
 return {
     {
-        'norcalli/nvim-colorizer.lua',
+        -- maintained fork of norcalli/nvim-colorizer.lua
+        'catgoose/nvim-colorizer.lua',
         lazy = true,
-        event = { 'CursorHold' },
-        opts = { '*' },
+        -- lazy.nvim re-triggers `FileType` on load, so the current buffer is attached too
+        event = { 'FileType' },
+        opts = { filetypes = { '*' } },
     }
 }
