@@ -1,14 +1,48 @@
+local building = 0
+local saved_cl ---@type string?
+
+--- Run a parser install/update task of nvim-treesitter.
+--- On Windows, MSVC takes minutes to compile large parsers (e.g. gitcommit) with optimizations,
+--- and an interrupted build makes the next install fail (`Could not rename temp: EPERM`).
+--- So disable optimizations while building (`_CL_` is appended to the options of cl.exe).
+---@param fn fun(): async.Task
+---@return async.Task
+local function build_parsers(fn)
+    if vim.fn.has('win32') == 0 then
+        return fn()
+    end
+
+    if building == 0 then
+        saved_cl = vim.env._CL_
+        vim.env._CL_ = vim.trim((saved_cl or '') .. ' /Od')
+    end
+    building = building + 1
+
+    local task = fn()
+    task:await(function ()
+        vim.schedule(function ()
+            building = building - 1
+            if building == 0 then
+                vim.env._CL_ = saved_cl
+            end
+        end)
+    end)
+    return task
+end
+
 return {
     {
         'nvim-treesitter/nvim-treesitter',
         branch = 'main',
-        build = ':TSUpdate',
+        build = function ()
+            build_parsers(function () return require('nvim-treesitter').update() end)
+        end,
         lazy = false,
         config = function ()
             local treesitter = require 'nvim-treesitter'
 
             treesitter.setup { install_dir = vim.fs.joinpath(vim.fn.stdpath('data'), 'treesitter') }
-            treesitter.install { "gitcommit" }
+            build_parsers(function () return treesitter.install { 'gitcommit' } end)
 
             local available = {} ---@type table<string, boolean>
             for _, lang in ipairs(treesitter.get_available()) do
@@ -47,7 +81,7 @@ return {
                     end
 
                     -- Install the parser asynchronously, then start
-                    treesitter.install(lang):await(function (err)
+                    build_parsers(function () return treesitter.install(lang) end):await(function (err)
                         if err then return end
                         vim.schedule(function () start(args.buf, lang) end)
                     end)
