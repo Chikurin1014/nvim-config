@@ -1,7 +1,7 @@
 return {
     {
         'folke/flash.nvim',
-        ---@type flash.config
+        ---@type Flash.Config
         opts = {
             modes = {
                 search = { enabled = false }

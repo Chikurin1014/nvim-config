@@ -4,7 +4,7 @@ return {
         lazy = true,
         event = 'VeryLazy',
         ---@module 'edgy'
-        ---@param opts Edgy.Config
+        ---@type Edgy.Config
         opts = {
             left = {
                 {

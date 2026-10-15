@@ -1,7 +1,7 @@
 return {
     {
         'L3MON4D3/LuaSnip',
-        versioin = 'v2.*',
+        version = 'v2.*',
         dependencies = {
             'rafamadriz/friendly-snippets'
         },
