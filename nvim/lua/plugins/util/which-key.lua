@@ -16,7 +16,15 @@ return {
             }
         },
         opts = {
-            preset = 'helix'
+            preset = 'helix',
+            -- Groups of key mappings (descriptions only)
+            spec = {
+                { '<leader>g', group = 'Git' },
+                { '<leader>j', group = 'Jump' },
+                { '<leader>o', group = 'Open' },
+                { '<leader>t', group = 'Toggle' },
+                { '<leader>tg', group = 'Toggle git' },
+            },
         },
         init = function()
             vim.opt.timeout = true

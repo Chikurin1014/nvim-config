@@ -1,11 +1,6 @@
 -- Leader key
 vim.g.mapleader = ' '
 
--- Sub-leader keys
-vim.keymap.set('n', '<leader>f', '', { desc = 'Find' })
-vim.keymap.set('n', '<leader>o', '', { desc = 'Open' })
-vim.keymap.set('n', '<leader>t', '', { desc = 'Toggle' })
-
 -- Diagnostic
 vim.keymap.set(
     'n',
