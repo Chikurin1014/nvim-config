@@ -1,8 +1,8 @@
 vim.lsp.config('*', {
-    root_markers = { '.git/' }
+    root_markers = { '.git' }
 })
 vim.lsp.enable({
     'copilot',
-    'markdown-oxide',
+    'markdown_oxide',
     'nixd'
 })
