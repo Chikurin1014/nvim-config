@@ -51,11 +51,12 @@ return {
                         local file = vim.fn.fnamemodify(item.file, ':t')
                         if (#dir + #file + 2) > ctx.width then
                             -- truncate dir
-                            local subdir = dir:match('^~/([^/]+)/')
-                            dir = ('~/%s/……/'):format(subdir) .. vim.fn.fnamemodify(dir, ':t')
+                            local head = dir:match('^(~?/[^/]+)/')
+                            if head then
+                                dir = ('%s/……/'):format(head) .. vim.fn.fnamemodify(dir, ':t')
+                            end
                         end
-                        return dir and { { file, hl = 'file' }, { '  ' .. dir, hl = 'dir' } } or
-                            { { fname, hl = 'file' } }
+                        return { { file, hl = 'file' }, { '  ' .. dir, hl = 'dir' } }
                     end,
                 },
                 sections = {
