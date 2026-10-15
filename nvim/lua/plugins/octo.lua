@@ -16,9 +16,5 @@ return {
             -- bare Octo command opens picker of commands
             enable_builtin = true,
         },
-        config = function(_, opts)
-            require('mini.icons').mock_nvim_web_devicons()
-            require('octo').setup(opts)
-        end
     },
 }

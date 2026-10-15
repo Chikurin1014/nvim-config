@@ -1,8 +1,6 @@
 return {
     {
         'folke/snacks.nvim',
-        priority = 1000,
-        lazy = false,
         keys = {
             { '<leader>p', function() Snacks.picker() end,                 mode = 'n', desc = 'Find' },
             { '<leader>f', function() Snacks.picker.files() end,           mode = 'n', desc = 'Find file' },

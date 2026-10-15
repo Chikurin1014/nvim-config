@@ -126,9 +126,5 @@ return {
             tabline = { lualine_z = { { 'tabs' } } },
             extensions = { 'mason', 'lazy' }
         },
-        config = function(_, opts)
-            require('mini.icons').mock_nvim_web_devicons()
-            require('lualine').setup(opts)
-        end,
     },
 }

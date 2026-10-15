@@ -6,6 +6,6 @@ return {
         keys = {
             { 'grn', ':IncRename ', mode = 'n', desc = 'rename symbol' }
         },
-        config = true,
+        opts = { input_buffer_type = 'snacks' },
     }
 }

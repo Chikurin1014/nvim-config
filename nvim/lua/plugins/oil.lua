@@ -1,27 +1,20 @@
 return {
     {
         'stevearc/oil.nvim',
-        ---@module 'oil'
-        ---@type oil.SetupOpts
         -- Optional dependencies
         specs = { { 'nvim-mini/mini.icons', lazy = true } },
         -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
         lazy = false,
-        cmd = { 'Oil' },
         keys = {
             {
                 '<leader>oe',
-                function()
-                    local oil = require 'oil'
-                    oil.open(nil, { preview = { vertical = true, split = 'belowright' } }, function()
-                        -- open & resize preview automatically
-                        oil.open_preview({}, function() vim.cmd('vertical resize 30') end)
-                    end)
-                end,
+                function() require('utils.oil').open_with_preview() end,
                 mode = 'n',
                 desc = 'Open Oil explorer'
             },
         },
+        ---@module 'oil'
+        ---@type oil.SetupOpts
         opts = {
             default_file_explorer = true,
             keymaps = {
@@ -44,9 +37,5 @@ return {
             },
             use_default_keymaps = false,
         },
-        config = function(_, opts)
-            local oil = require('oil')
-            oil.setup(opts)
-        end,
     },
 }
