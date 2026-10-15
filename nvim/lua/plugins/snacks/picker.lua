@@ -26,7 +26,8 @@ return {
                 previewers = {
                     diff = {
                         style = 'fancy',
-                        cmd = { 'difft --color=always --display=side-by-side' },
+                        -- only used when `style = 'terminal'`
+                        cmd = { 'difft', '--color=always', '--display=side-by-side' },
                     }
                 },
             },
