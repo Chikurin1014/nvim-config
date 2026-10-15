@@ -96,7 +96,8 @@ return {
                             -- fallback to default
                             local fname = vim.fn.fnamemodify(text, ':h:gs?\\?/?')
                             if root and #root > 0 then
-                                local relpath = vim.fs.relpath(root, text)
+                                -- `text` is relative (`path = 4`), so use the absolute buffer name
+                                local relpath = vim.fs.relpath(root, vim.api.nvim_buf_get_name(0))
                                 if relpath then
                                     fname = vim.fn.fnamemodify(
                                         vim.fs.joinpath(vim.fn.fnamemodify(root, ':t'), relpath),
