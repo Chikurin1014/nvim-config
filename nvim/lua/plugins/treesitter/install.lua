@@ -37,7 +37,6 @@ return {
                 callback = function (args)
                     -- Do not start treesitter if the buffer is not a file
                     if vim.bo[args.buf].buftype ~= '' then return end
-                    if vim.tbl_contains({ 'oil' }, args.match) then return end
 
                     local lang = vim.treesitter.language.get_lang(args.match)
                     if not lang or not available[lang] then return end
