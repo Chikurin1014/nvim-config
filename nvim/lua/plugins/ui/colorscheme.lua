@@ -1,8 +1,9 @@
 local function import_theme(plugin, mod, options)
     options = options or {}
-    local theme = options.theme or mod
-    local is_default = theme == vim.g.default_colorscheme
-    local theme_mod = 'plugins.ui.themes.' .. theme
+    local themes = options.themes or { mod }
+    local default = vim.g.default_colorscheme
+    local contains_default = vim.tbl_contains(themes, default)
+    local theme_mod = 'plugins.ui.themes.' .. mod
     local ok, specs = pcall(require, theme_mod)
     if not ok then
         -- Theme files are optional, but errors inside them should not be hidden
@@ -13,24 +14,33 @@ local function import_theme(plugin, mod, options)
     end
     return {
         plugin,
-        enabled = options.enabled or specs.enabled or is_default,
+        enabled = options.enabled or specs.enabled or contains_default,
         -- Load the default colorscheme at startup to avoid flickering.
         -- Others are loaded by lazy.nvim on `:colorscheme` automatically.
-        lazy = not is_default,
-        priority = is_default and 1000 or nil,
-        event = not is_default and 'CursorHold' or nil,
+        lazy = not contains_default,
+        priority = contains_default and 1000 or nil,
+        event = not contains_default and { 'CursorHold' } or nil,
         opts = vim.tbl_deep_extend('force', specs.opts or {}, options.opts or {}),
         config = specs.config
-            or function(_, opts)
+            or function (_, opts)
                 require(specs.main or mod).setup(opts)
-                if is_default then
-                    vim.cmd.colorscheme(theme)
+                if contains_default then
+                    vim.cmd.colorscheme(default)
                 end
-            end,
+            end
     }
 end
 
 return {
-    import_theme('rebelot/kanagawa.nvim', 'kanagawa', { enabled = true }),
-    import_theme('EdenEast/nightfox.nvim', 'nightfox', { enabled = true }),
+    import_theme(
+        'rebelot/kanagawa.nvim', 'kanagawa',
+        {
+            enabled = true,
+            themes = { 'kanagawa', 'kanagawa-dragon', 'kanagawa-lotus' }
+        }
+    ),
+    import_theme('EdenEast/nightfox.nvim', 'nightfox', {
+        enabled = true,
+        themes = { 'nightfox', 'nordfox', 'duskfox', 'dayfox', 'terafox', 'carbonfox' }
+    })
 }

@@ -1,7 +1,7 @@
 -- Global variables
 vim.g.is_unix = package.config:sub(1, 1) == '/'
 vim.g.shell = vim.g.is_unix and 'fish' or 'nu'
-vim.g.default_colorscheme = 'kanagawa'
+vim.g.default_colorscheme = 'nordfox'
 
 vim.opt.backup = false
 vim.opt.exrc = true
@@ -26,16 +26,16 @@ vim.diagnostic.config {
             [vim.diagnostic.severity.ERROR] = ' ',
             [vim.diagnostic.severity.WARN] = ' ',
             [vim.diagnostic.severity.INFO] = ' ',
-            [vim.diagnostic.severity.HINT] = ' ',
+            [vim.diagnostic.severity.HINT] = ' '
         },
         numhl = {
             [vim.diagnostic.severity.ERROR] = 'DiagnosticSignError',
             [vim.diagnostic.severity.WARN] = 'DiagnosticSignWarn',
             [vim.diagnostic.severity.INFO] = 'DiagnosticSignInfo',
-            [vim.diagnostic.severity.HINT] = 'DiagnosticSignHint',
-        },
+            [vim.diagnostic.severity.HINT] = 'DiagnosticSignHint'
+        }
     },
     virtual_text = false,
     virtual_lines = { current_line = true },
-    float = { source = true },
+    float = { source = true }
 }
